@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TestClient
 {
@@ -221,6 +222,12 @@ namespace TestClient
                         bRes = true;
                         Action TestRequestResult = TestApp;
                         HubConnectionNew.On("TestOp", TestRequestResult);
+                        //For test
+                        HubConnectionNew.On("TestOp", () =>
+                        {
+                            MessageBox.Show("Receive a TestOp message from the server");
+                        });
+
                     }
                     else
                         StopHubConnection();

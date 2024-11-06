@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TestClientServer
-{                  
+{
     internal class Startup
     {
         #region Properties&Attributes
@@ -54,6 +54,8 @@ namespace TestClientServer
                 hubOptions.ClientTimeoutInterval = TimeSpan.FromSeconds(100);
                 //hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(1);
             });
+            // Register MessageBackgroundService
+            services.AddHostedService<MessageBackgroundService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
